@@ -57,7 +57,7 @@ export const updateUser = async (req, res) => {
       });
       const token = jwt.sign(
         { username: user.username, id: user._id },
-        process.env.JWT_KEY,
+        'MERN',
         { expiresIn: '24h' }
       );
 

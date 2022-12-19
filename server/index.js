@@ -11,6 +11,7 @@ import cors from 'cors';
 import UploadRoute from './Routes/UploadRoute.js';
 // Routes
 
+const port = process.env.PORT || 5000;
 const app = express();
 
 app.use(express.static('public'));
@@ -22,15 +23,14 @@ app.use(cors());
 dotenv.config();
 
 mongoose
-  .connect(process.env.MONGO_DB, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() =>
-    app.listen(process.env.PORT, () =>
-      console.log(`listening on port ${process.env.PORT}`)
-    )
+  .connect(
+    'mongodb+srv://Gabriel:gabriel.gs605@cluster0.zu6trkm.mongodb.net/?retryWrites=true&w=majority',
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }
   )
+  .then(() => app.listen(port, () => console.log(`listening on port ${port}`)))
   .catch((error) => console.log(error));
 
 // usage of Routes

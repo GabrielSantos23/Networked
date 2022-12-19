@@ -23,7 +23,7 @@ export const registerUser = async (req, res) => {
         username: user.username,
         id: user._id,
       },
-      process.env.JWT_KEY,
+      'MERN',
       { expiresIn: '24h' }
     );
     res.status(200).json({ user, token });
